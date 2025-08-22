@@ -1,0 +1,41 @@
+Product:
+- Create(from admin panel)
+- Update(from admin panel)
+- Delete(from admin panel)
+- Get(from anybody)
+- Get(by Id)
+- Get list with pagination(from anybody)
+- Get list with sotring options(from frontend)
+
+User:
+- Create(register)
+- Update(setting)
+- Delete(by admin)
+- Get(by Id)
+- Get(authentication)
+
+Category:
+- Create(from admin panel)
+- Update(from admin panel)
+- Delete(from admin panel)
+- Get(from anybody)
+- Get list(from frontend)
+- Get(by Id)
+
+Order:
+- Create(from system after user confirmation)
+- Update(from system after deliver is done)
+- Get(from user)
+- Get(by Id)
+- Get list(from User to frontend)
+
+Product Review:
+- Create(from user)
+- Delete(from user or admin)
+- Get(by Id)
+- Get list(from Product to frontend)
+
+Shopping Cart:
+- Update(from user)
+- Delete(from user)
+- Get(from frontend)
