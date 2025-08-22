@@ -7,16 +7,19 @@ public class User
     public string Phone { get; private set; }
     public UserAddress Address { get; private set; }
     public ShoppingCart ShoppingCart { get; private set; }
-    public List<Product> WishList { get; private set; }
-    public List<Order> OrdersHistory { get; private set; }
+    private readonly List<Product> _wishList;
+    public IReadOnlyCollection<Product> WishList => _wishList.AsReadOnly();
+
+    private readonly List<Order> _ordersHistory;
+    public IReadOnlyCollection<Order> OrdersHistory => _ordersHistory.AsReadOnly();
 
     public User()
     {
         Id = Guid.NewGuid();
 
         ShoppingCart = new ShoppingCart(Id);
-        WishList = new List<Product>();
-        OrdersHistory = new List<Order>();
+        _wishList = new List<Product>();
+        _ordersHistory = new List<Order>();
     }
 
     public void SetEmail(string email)
@@ -49,5 +52,37 @@ public class User
         ArgumentNullException.ThrowIfNull(userAddress, nameof(userAddress));
 
         Address = userAddress;
+    }
+
+    public void AddToWishList(Product product)
+    {
+        ArgumentNullException.ThrowIfNull(product, nameof(product));
+
+        if (_wishList.Contains(product))
+            throw new InvalidOperationException("Product already in wishlist.");
+
+        _wishList.Add(product);
+    }
+
+    public void RemoveFromWishList(Product product)
+    {
+        ArgumentNullException.ThrowIfNull(product, nameof(product));
+
+        if (!_wishList.Contains(product))
+            throw new InvalidOperationException("Product not found in wishlist.");
+
+        _wishList.Remove(product);
+    }
+
+    public void ClearWishList()
+    {
+        _wishList.Clear();
+    }
+
+    public void AddOrder(Order order)
+    {
+        ArgumentNullException.ThrowIfNull(order, nameof(order));
+
+        _ordersHistory.Add(order);
     }
 }

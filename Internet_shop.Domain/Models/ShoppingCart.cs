@@ -3,7 +3,8 @@
 public class ShoppingCart
 {   
     public Guid UserId { get; init; }
-    public List<Product> Products { get; private set; }
+    private readonly List<Product> _products; 
+    public IReadOnlyCollection<Product> Products => _products.AsReadOnly();
     public decimal SummaryPrice { get; private set; }
 
     public ShoppingCart(Guid userId)
@@ -12,7 +13,7 @@ public class ShoppingCart
             throw new ArgumentNullException("userId can't be empty.");
 
         UserId = userId;
-        Products = new List<Product>();
+        _products = new List<Product>();
         SummaryPrice = 0;
     }
 
@@ -20,7 +21,7 @@ public class ShoppingCart
     {
         ArgumentNullException.ThrowIfNull(product, nameof(product));
         
-        Products.Add(product);
+        _products.Add(product);
         SummaryPrice += product.Price;
     }
 
@@ -28,13 +29,13 @@ public class ShoppingCart
     {
         ArgumentNullException.ThrowIfNull(product, nameof(product));
 
-        Products.Remove(product);
+        _products.Remove(product);
         SummaryPrice -= product.Price;
     }
 
     public void Clear()
     {
-        Products.Clear();
+        _products.Clear();
         SummaryPrice = 0;
     }
 }
