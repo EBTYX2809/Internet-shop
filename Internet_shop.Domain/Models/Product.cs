@@ -7,7 +7,8 @@ public class Product
     public string Description { get; private set; }
     public decimal Price { get; private set; }
     public Category Category { get; private set; }
-    public List<ProductReview> Reviews { get; private set; }
+    private List<ProductReview> _reviews;
+    public IReadOnlyCollection<ProductReview> Reviews => _reviews.AsReadOnly();
     public double Rating { get; private set; }
 
     public Product(string name, string description, decimal price, Category category)
@@ -29,7 +30,7 @@ public class Product
         Description = description;
         Price = price;
         Category = category;
-        Reviews = new List<ProductReview>();
+        _reviews = new List<ProductReview>();
     }
 
     public void Rename(string name)
@@ -67,7 +68,10 @@ public class Product
     {
         ArgumentNullException.ThrowIfNull(review, nameof(review));
 
-        Reviews.Add(review);
-        Rating = Reviews.Average(r => r.Score);
+        if (_reviews.Any(r => r.ProductId == review.ProductId) && _reviews.Any(r => r.UserId == review.UserId))
+            throw new InvalidOperationException("One user could have only one review to one product.");
+
+        _reviews.Add(review);
+        Rating = _reviews.Average(r => r.Score);
     }
 }
