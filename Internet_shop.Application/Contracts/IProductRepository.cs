@@ -4,9 +4,9 @@ namespace Internet_shop.Application.Contracts;
 
 public interface IProductRepository
 {
-    Task CreateProductAsync(Product product);
-    Task UpdateProductAsync(Product product);
-    Task DeleteProductAsync(Guid productId);
-    Task<Product?> GetProductByIdAsync(Guid productId);
-    Task<IReadOnlyCollection<Product>> GetAllProductsAsync(); // Implement pagination and sorting here
+    Task CreateAsync(Product product);
+    Task UpdateAsync(Product product);
+    Task DeleteAsync(Guid productId);
+    Task<Product?> GetByIdAsync(Guid productId);
+    Task<IReadOnlyCollection<Product>> GetListAsync(); // Implement pagination and sorting here
 }

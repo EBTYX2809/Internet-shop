@@ -4,8 +4,8 @@ namespace Internet_shop.Application.Contracts;
 
 public interface IUserRepository
 {
-    Task CreateUserAsync(User user);
-    Task UpdateUserAsync(User user);
-    Task DeleteUserAsync(Guid userId);
-    Task<User?> GetUserById(Guid userId);    
+    Task AddAsync(User user);
+    Task UpdateAsync(User user);
+    Task DeleteAsync(Guid userId);
+    Task<User?> GetByIdAsync(Guid userId);    
 }
