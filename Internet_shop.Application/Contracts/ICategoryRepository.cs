@@ -8,5 +8,5 @@ public interface ICategoryRepository
     Task UpdateAsync(Category category);
     Task DeleteAsync(Guid categoryId);
     Task<Category?> GetByIdAsync(Guid categoryId);
-    Task<IReadOnlyCollection<Category>> GetListAsync();
+    Task<IReadOnlyCollection<Category>> GetAllAsync();
 }

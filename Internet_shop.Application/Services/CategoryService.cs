@@ -44,6 +44,6 @@ public class CategoryService
 
     public async Task<IReadOnlyCollection<Category>> GetAllCategoriesByIdAsync()
     {       
-        return await _categoryRepository.GetListAsync();
+        return await _categoryRepository.GetAllAsync();
     }
 }
