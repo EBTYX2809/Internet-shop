@@ -7,6 +7,5 @@ public interface IProductRepository
     Task AddAsync(Product product);
     Task UpdateAsync(Product product);
     Task DeleteAsync(Guid productId);
-    Task<Product?> GetByIdAsync(Guid productId);
-    Task<IReadOnlyCollection<Product>> GetListAsync(); // Implement pagination and sorting here
+    Task<Product?> GetByIdAsync(Guid productId);    
 }

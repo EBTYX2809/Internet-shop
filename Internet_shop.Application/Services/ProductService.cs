@@ -1,4 +1,5 @@
 ﻿using Internet_shop.Application.Contracts;
+using Internet_shop.Application.DTOs;
 using Internet_shop.Domain.Models;
 
 namespace Internet_shop.Application.Services;
@@ -6,11 +7,13 @@ namespace Internet_shop.Application.Services;
 public class ProductService
 {
     private readonly IProductRepository _productRepository;
+    private readonly ISearchProductRepository _searchProductRepository;
     private readonly CategoryService _categoryService;
 
-    public ProductService(IProductRepository productRepository, CategoryService categoryService)
+    public ProductService(IProductRepository productRepository, ISearchProductRepository searchProductRepository, CategoryService categoryService)
     {
         _productRepository = productRepository;
+        _searchProductRepository = searchProductRepository;
         _categoryService = categoryService;
     }
 
@@ -40,7 +43,10 @@ public class ProductService
         return product;
     }
 
-    // To do pagination here
+    public async Task<PaginatedResultDTO<Product>> GetListOfProductsAsync(ProductQueryDTO productQuery)
+    {
+        return await _searchProductRepository.GetProductsAsync(productQuery);
+    }
 
     // Settings
     public async Task RenameProductAsync(Guid productId, string newName)
