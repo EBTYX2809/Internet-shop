@@ -1,5 +1,5 @@
 ﻿using Internet_shop.Application.Contracts;
-using Internet_shop.Domain.Models;
+using Internet_shop.Domain.Models.Categorization;
 
 namespace Internet_shop.Application.Services;
 
@@ -43,7 +43,7 @@ public class CategoryService
     }
 
     public async Task<IReadOnlyCollection<Category>> GetAllCategoriesByIdAsync()
-    {       
+    {
         return await _categoryRepository.GetAllAsync();
     }
 }

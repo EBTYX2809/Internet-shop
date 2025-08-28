@@ -1,4 +1,4 @@
-﻿using Internet_shop.Domain.Models;
+﻿using Internet_shop.Domain.Models.Categorization;
 
 namespace Internet_shop.Application.Contracts;
 

@@ -2,6 +2,7 @@
 using Internet_shop.Application.DTOs;
 using Internet_shop.Domain.Models;
 
+
 namespace Internet_shop.Application.Services;
 
 public class ProductService
@@ -76,12 +77,32 @@ public class ProductService
         await _productRepository.UpdateAsync(product);
     }
 
+    // Categories
     public async Task ChangeCategoryForProductAsync(Guid productId, Guid categoryId)
     {
         var product = await GetProductByIdAsync(productId);
         var category = await _categoryService.GetCategoryByIdAsync(categoryId);
 
-        product.ChangeCategory(category);
+        product.ChangeCategory(category.CategoryInfo);
+
+        await _productRepository.UpdateAsync(product);
+    }
+
+    public async Task ChangeSubCategoryForProductAsync(Guid productId, Guid categoryId)
+    {
+        var product = await GetProductByIdAsync(productId);
+        var category = await _categoryService.GetCategoryByIdAsync(categoryId);
+
+        product.ChangeSubCategory(category.CategoryInfo);
+
+        await _productRepository.UpdateAsync(product);
+    }
+
+    public async Task ChangeSpecificationListForProductAsync(Guid productId, Dictionary<string, string> specificationList)
+    {
+        var product = await GetProductByIdAsync(productId);
+
+        product.ChangeSpecificationList(specificationList);
 
         await _productRepository.UpdateAsync(product);
     }
