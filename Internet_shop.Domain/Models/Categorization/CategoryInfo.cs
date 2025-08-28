@@ -1,10 +1,10 @@
-﻿namespace Internet_shop.Domain.Models;
+﻿namespace Internet_shop.Domain.Models.Categorization;
 
-public class Category
+public class CategoryInfo
 {
     public Guid Id { get; init; }
     public string Name { get; private set; }
-    public Category(string name)
+    public CategoryInfo(string name)
     {
         Id = Guid.NewGuid();
 

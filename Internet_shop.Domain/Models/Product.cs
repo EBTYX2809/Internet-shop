@@ -1,4 +1,6 @@
-﻿namespace Internet_shop.Domain.Models;
+﻿using Internet_shop.Domain.Models.Categorization;
+
+namespace Internet_shop.Domain.Models;
 
 public class Product
 {
@@ -6,19 +8,23 @@ public class Product
     public string Name { get; private set; }
     public string Description { get; private set; }
     public decimal Price { get; private set; }
-    public Category Category { get; private set; }
+    public CategoryInfo Category { get; private set; }
+    public CategoryInfo SubCategory { get; private set; }
+    private Dictionary<string, string> _specificationList;
+    public IReadOnlyDictionary<string, string> SpecificationList => _specificationList.AsReadOnly();
     private List<ProductReview> _reviews;
     public IReadOnlyCollection<ProductReview> Reviews => _reviews.AsReadOnly();
     public double Rating { get; private set; }
 
-    public Product(string name, string description, decimal price, Category category)
+    public Product(string name, string description, decimal price,
+        CategoryInfo category, CategoryInfo subCategory, Dictionary<string, string> specificationList)
     {
         Id = Guid.NewGuid();
 
         if (string.IsNullOrWhiteSpace(name) || name.Length > 20)
             throw new ArgumentException("Name can't be null or longer than 20 symbols.");
 
-        if(string.IsNullOrWhiteSpace(description) || description.Length > 100)
+        if (string.IsNullOrWhiteSpace(description) || description.Length > 100)
             throw new ArgumentException("Description can't be null or longer than 100 symbols.");
 
         if (price <= 0)
@@ -30,6 +36,9 @@ public class Product
         Description = description;
         Price = price;
         Category = category;
+        _specificationList = specificationList;
+        SubCategory = subCategory;
+
         _reviews = new List<ProductReview>();
     }
 
@@ -57,11 +66,25 @@ public class Product
         Price = price;
     }
 
-    public void ChangeCategory(Category category)
+    public void ChangeCategory(CategoryInfo categoryInfo)
     {
-        ArgumentNullException.ThrowIfNull(category, nameof(category));
+        ArgumentNullException.ThrowIfNull(categoryInfo, nameof(categoryInfo));
 
-        Category = category;
+        Category = categoryInfo;
+    }
+
+    public void ChangeSubCategory(CategoryInfo categoryInfo)
+    {
+        ArgumentNullException.ThrowIfNull(categoryInfo, nameof(categoryInfo));
+
+        SubCategory = categoryInfo;
+    }
+
+    public void ChangeSpecificationList(Dictionary<string, string> specificationList)
+    {
+        ArgumentNullException.ThrowIfNull(specificationList, nameof(specificationList));
+
+        _specificationList = specificationList;
     }
 
     public void AddReview(ProductReview review)
