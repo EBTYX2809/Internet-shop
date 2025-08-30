@@ -13,5 +13,5 @@ public class ProductQueryDTO
     public SortingOrder OrderBy { get; set; }
 
     // filtering
-    //public ProductFilter Filter { get; set; } // create product filter infrastructure
+    public ProductFilter Filter { get; set; } // create product filter infrastructure
 }
