@@ -1,6 +1,5 @@
 ﻿using Internet_shop.Domain.Models;
 using Internet_shop.Infrastructure.Configurations;
-using Internet_shop.Infrastructure.Entities;
 using Internet_shop.Infrastructure.EntityConfigurations;
 using Microsoft.EntityFrameworkCore;
 
@@ -17,11 +16,17 @@ public class AppDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {        
-        modelBuilder.ApplyConfiguration<UserEntity>(new UserEntityConfiguration());
-        modelBuilder.ApplyConfiguration<ProductEntity>(new ProductEntityConfiguration());
-        modelBuilder.ApplyConfiguration<ProductReviewEntity>(new ProductReviewEntityConfiguration());
-        modelBuilder.ApplyConfiguration<ShoppingCartItemEntity>(new ShoppingCartItemEntityConfiguration());
-        modelBuilder.ApplyConfiguration<OrderEntity>(new OrderEntityConfiguration());
+        modelBuilder.ApplyConfiguration(new UserEntityConfiguration());
+        modelBuilder.ApplyConfiguration(new ShoppingCartItemEntityConfiguration());
+        modelBuilder.ApplyConfiguration(new ProductEntityConfiguration());
+        modelBuilder.ApplyConfiguration(new ProductSpecificationEntityConfiguration());
+        modelBuilder.ApplyConfiguration(new ProductReviewEntityConfiguration());
+        modelBuilder.ApplyConfiguration(new CategoryEntityConfiguration());
+        modelBuilder.ApplyConfiguration(new SubCategoryEntityConfiguration());
+        modelBuilder.ApplyConfiguration(new SpecificationEntityConfiguration());
+        modelBuilder.ApplyConfiguration(new SpecificationValueEntityConfiguration());        
+        modelBuilder.ApplyConfiguration(new OrderEntityConfiguration());
+        modelBuilder.ApplyConfiguration(new OrderItemEntityConfiguration());
 
         base.OnModelCreating(modelBuilder);
     }
