@@ -14,7 +14,6 @@ internal class ProductEntityConfiguration : IEntityTypeConfiguration<ProductEnti
 
         builder.Property(u => u.Id)
             .IsRequired()
-            .ValueGeneratedOnAdd()
             .HasColumnName("id");
 
         builder.Property(p => p.Name)

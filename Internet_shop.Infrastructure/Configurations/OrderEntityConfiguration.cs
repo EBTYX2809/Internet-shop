@@ -14,8 +14,7 @@ internal class OrderEntityConfiguration : IEntityTypeConfiguration<OrderEntity>
         builder.HasKey(o => o.Id);
 
         builder.Property(u => u.Id)
-            .IsRequired()
-            .ValueGeneratedOnAdd()
+            .IsRequired()            
             .HasColumnName("id");
 
         builder.Property(o => o.CreatedDate)

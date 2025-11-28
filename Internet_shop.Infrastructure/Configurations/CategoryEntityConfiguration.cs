@@ -14,7 +14,6 @@ internal class CategoryEntityConfiguration : IEntityTypeConfiguration<CategoryEn
 
         builder.Property(c => c.Id)
             .IsRequired()
-            .ValueGeneratedOnAdd()
             .HasColumnName("id");
 
         builder.Property(c => c.Name)
