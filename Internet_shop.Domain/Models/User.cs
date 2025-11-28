@@ -13,13 +13,35 @@ public class User
     private readonly List<Order> _ordersHistory;
     public IReadOnlyCollection<Order> OrdersHistory => _ordersHistory.AsReadOnly();
 
-    public User()
+    public User(string emailOrPhone)
     {
         Id = Guid.NewGuid();
-
+        InitializeEmailOrPhone(emailOrPhone);
         ShoppingCart = new ShoppingCart(Id);
         _wishList = new List<Product>();
         _ordersHistory = new List<Order>();
+    }
+
+    public User(Guid id, string emailOrPhone)
+    {
+        Id = id;
+        InitializeEmailOrPhone(emailOrPhone);
+        ShoppingCart = new ShoppingCart(Id);
+        _wishList = new List<Product>();
+        _ordersHistory = new List<Order>();
+    }
+
+    private void InitializeEmailOrPhone(string emailOrPhone)
+    {
+        try
+        {
+            SetEmail(emailOrPhone);
+            SetPhone(emailOrPhone);
+        }
+        catch (ArgumentException ex) { }
+
+        if (string.IsNullOrWhiteSpace(Email) && string.IsNullOrWhiteSpace(Phone))
+            throw new ArgumentException("Either a valid email or phone number must be provided.");
     }
 
     public void SetEmail(string email)
