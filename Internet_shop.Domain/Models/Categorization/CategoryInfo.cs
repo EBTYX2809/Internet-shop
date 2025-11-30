@@ -14,6 +14,16 @@ public class CategoryInfo
         Name = name;
     }
 
+    public CategoryInfo(Guid id, string name)
+    {
+        Id = id;
+
+        if (string.IsNullOrWhiteSpace(name) || name.Length > 20)
+            throw new ArgumentException("Name can't be null or longer than 20 symbols.");
+
+        Name = name;
+    }
+
     public void Rename(string name)
     {
         if (string.IsNullOrWhiteSpace(name) || name.Length > 20)

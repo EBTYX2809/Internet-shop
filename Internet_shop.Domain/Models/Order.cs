@@ -24,6 +24,21 @@ public class Order
         SummaryPrice = products.Sum(p => p.Price);
     }
 
+    public Order(Guid id, Guid userId, List<Product> products)
+    {
+        Id = id;
+
+        if (userId == Guid.Empty)
+            throw new ArgumentNullException("userId can't be empty.");
+
+        ArgumentNullException.ThrowIfNull(products, nameof(products));
+
+        UserId = userId;
+        CreatedDate = DateTime.UtcNow;
+        Products = products;
+        SummaryPrice = products.Sum(p => p.Price);
+    }
+
     public void SetDeliveredDate(DateTime deliveredDate)
     {
         if(DeliveredDate <= DateTime.UtcNow || DeliveredDate >= DateTime.UtcNow.AddMonths(2))

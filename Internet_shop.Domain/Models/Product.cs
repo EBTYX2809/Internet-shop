@@ -42,6 +42,32 @@ public class Product
         _reviews = new List<ProductReview>();
     }
 
+    public Product(Guid id, string name, string description, decimal price,
+        CategoryInfo category, CategoryInfo subCategory, Dictionary<string, string> specificationList)
+    {
+        Id = id;
+
+        if (string.IsNullOrWhiteSpace(name) || name.Length > 20)
+            throw new ArgumentException("Name can't be null or longer than 20 symbols.");
+
+        if (string.IsNullOrWhiteSpace(description) || description.Length > 100)
+            throw new ArgumentException("Description can't be null or longer than 100 symbols.");
+
+        if (price <= 0)
+            throw new ArgumentException("Price can't be lower or equal to 0.");
+
+        ArgumentNullException.ThrowIfNull(category, nameof(category));
+
+        Name = name;
+        Description = description;
+        Price = price;
+        Category = category;
+        _specificationList = specificationList;
+        SubCategory = subCategory;
+
+        _reviews = new List<ProductReview>();
+    }
+
     public void Rename(string name)
     {
         if (string.IsNullOrWhiteSpace(name) || name.Length > 20)
