@@ -24,7 +24,7 @@ public class Order
         SummaryPrice = products.Sum(p => p.Price);
     }
 
-    public Order(Guid id, Guid userId, List<Product> products)
+    public Order(Guid id, Guid userId, DateTime createdDatae, List<Product> products)
     {
         Id = id;
 
@@ -34,7 +34,7 @@ public class Order
         ArgumentNullException.ThrowIfNull(products, nameof(products));
 
         UserId = userId;
-        CreatedDate = DateTime.UtcNow;
+        CreatedDate = createdDatae;
         Products = products;
         SummaryPrice = products.Sum(p => p.Price);
     }
