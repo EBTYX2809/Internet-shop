@@ -1,8 +1,8 @@
-﻿using Internet_shop.Infrastructure.Entities;
+﻿using Internet_shop.Infrastructure.Entities.CategoryEntities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Internet_shop.Infrastructure.Configurations;
+namespace Internet_shop.Infrastructure.Configurations.CategoryConfigurations;
 
 internal class CategoryEntityConfiguration : IEntityTypeConfiguration<CategoryEntity>
 {

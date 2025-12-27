@@ -1,9 +1,9 @@
 ﻿using Internet_shop.Domain.Models;
-using Internet_shop.Infrastructure.Entities;
+using Internet_shop.Infrastructure.Entities.UserEntities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Internet_shop.Infrastructure.Configurations;
+namespace Internet_shop.Infrastructure.Configurations.UserConfigurations;
 
 internal class OrderEntityConfiguration : IEntityTypeConfiguration<OrderEntity>
 {

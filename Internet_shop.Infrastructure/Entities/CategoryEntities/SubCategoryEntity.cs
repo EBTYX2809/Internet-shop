@@ -1,4 +1,4 @@
-﻿namespace Internet_shop.Infrastructure.Entities;
+﻿namespace Internet_shop.Infrastructure.Entities.CategoryEntities;
 
 internal class SubCategoryEntity
 {
