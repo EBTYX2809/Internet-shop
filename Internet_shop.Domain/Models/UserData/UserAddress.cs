@@ -1,6 +1,6 @@
 ﻿using System.Reflection.Emit;
 
-namespace Internet_shop.Domain.Models;
+namespace Internet_shop.Domain.Models.UserData;
 
 public class UserAddress
 {
