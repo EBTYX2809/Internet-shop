@@ -16,6 +16,11 @@ internal class UserEntityConfiguration : IEntityTypeConfiguration<UserEntity>
             .IsRequired()
             .HasColumnName("id");
 
+        builder.Property(u => u.IsGuest)
+            .IsRequired()
+            .HasDefaultValue(true)
+            .HasColumnName("is_guest");
+
         builder.HasIndex(u => u.Email).IsUnique();
 
         builder.Property(u => u.Email)
@@ -29,6 +34,16 @@ internal class UserEntityConfiguration : IEntityTypeConfiguration<UserEntity>
             .IsRequired(false)            
             .HasMaxLength(15)
             .HasColumnName("phone");
+
+        builder.Property(u => u.PasswordHash)
+            .IsRequired(false)
+            .HasMaxLength(50)
+            .HasColumnName("password_hash");
+
+        builder.Property(u => u.Salt)
+            .IsRequired(false)
+            .HasMaxLength(30)
+            .HasColumnName("salt");
 
         builder.Property(u => u.AddressCountry)
             .IsRequired(false)
