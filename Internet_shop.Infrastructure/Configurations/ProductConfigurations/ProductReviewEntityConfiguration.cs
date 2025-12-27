@@ -1,8 +1,8 @@
-﻿using Internet_shop.Infrastructure.Entities;
+﻿using Internet_shop.Infrastructure.Entities.ProductEntities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Internet_shop.Infrastructure.EntityConfigurations;
+namespace Internet_shop.Infrastructure.Configurations.ProductConfigurations;
 
 internal class ProductReviewEntityConfiguration : IEntityTypeConfiguration<ProductReviewEntity>
 {

@@ -1,5 +1,8 @@
 ﻿using Internet_shop.Domain.Models;
 using Internet_shop.Domain.Models.Categorization;
+using Internet_shop.Infrastructure.Entities.CategoryEntities;
+using Internet_shop.Infrastructure.Entities.ProductEntities;
+using Internet_shop.Infrastructure.Entities.UserEntities;
 
 namespace Internet_shop.Infrastructure.Entities;
 

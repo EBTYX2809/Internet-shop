@@ -1,4 +1,6 @@
-﻿namespace Internet_shop.Infrastructure.Entities;
+﻿using Internet_shop.Infrastructure.Entities.ProductEntities;
+
+namespace Internet_shop.Infrastructure.Entities.UserEntities;
 
 internal class OrderItemEntity
 {

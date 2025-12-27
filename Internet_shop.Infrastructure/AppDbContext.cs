@@ -1,6 +1,8 @@
 ﻿using Internet_shop.Domain.Models;
 using Internet_shop.Infrastructure.Configurations;
-using Internet_shop.Infrastructure.Entities;
+using Internet_shop.Infrastructure.Entities.CategoryEntities;
+using Internet_shop.Infrastructure.Entities.ProductEntities;
+using Internet_shop.Infrastructure.Entities.UserEntities;
 using Internet_shop.Infrastructure.EntityConfigurations;
 using Microsoft.EntityFrameworkCore;
 

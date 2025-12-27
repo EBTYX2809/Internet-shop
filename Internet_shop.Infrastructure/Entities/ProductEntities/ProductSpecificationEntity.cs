@@ -1,4 +1,6 @@
-﻿namespace Internet_shop.Infrastructure.Entities;
+﻿using Internet_shop.Infrastructure.Entities.CategoryEntities;
+
+namespace Internet_shop.Infrastructure.Entities.ProductEntities;
 
 internal class ProductSpecificationEntity
 {
