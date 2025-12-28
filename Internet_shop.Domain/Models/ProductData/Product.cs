@@ -1,6 +1,6 @@
 ﻿using Internet_shop.Domain.Models.Categorization;
 
-namespace Internet_shop.Domain.Models;
+namespace Internet_shop.Domain.Models.ProductData;
 
 public class Product
 { 

@@ -1,4 +1,6 @@
-﻿namespace Internet_shop.Domain.Models.UserData;
+﻿using Internet_shop.Domain.Models.ProductData;
+
+namespace Internet_shop.Domain.Models.UserData;
 
 public class Customer
 {
