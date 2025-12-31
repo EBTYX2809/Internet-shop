@@ -4,5 +4,5 @@ public interface IWishListRepository
 {
     Task AddProductAsync(Guid userId, Guid productId);
     Task RemoveProductAsync(Guid userId, Guid productId);
-    Task ClearWishList(Guid userId);
+    Task ClearWishListAsync(Guid userId);
 }
