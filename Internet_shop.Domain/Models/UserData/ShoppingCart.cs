@@ -5,39 +5,20 @@ namespace Internet_shop.Domain.Models.UserData;
 public class ShoppingCart
 {   
     public Guid UserId { get; init; }
-    private readonly List<Product> _products; 
-    public IReadOnlyCollection<Product> Products => _products.AsReadOnly();
-    public decimal SummaryPrice { get; private set; }
+    public List<ProductInfo> Products { get; set; }
+    public decimal SummaryPrice { get; set; } // private set under add/remove methods
 
     public ShoppingCart(Guid userId)
     {
-        if (userId == Guid.Empty)
-            throw new ArgumentNullException("userId can't be empty.");
-
         UserId = userId;
-        _products = new List<Product>();
+        Products = new List<ProductInfo>();
         SummaryPrice = 0;
     }
 
-    public void AddProduct(Product product)
+    public ShoppingCart(Guid userId, List<ProductInfo> products)
     {
-        ArgumentNullException.ThrowIfNull(product, nameof(product));
-        
-        _products.Add(product);
-        SummaryPrice += product.Price;
-    }
-
-    public void RemoveProduct(Product product)
-    {
-        ArgumentNullException.ThrowIfNull(product, nameof(product));
-
-        _products.Remove(product);
-        SummaryPrice -= product.Price;
-    }
-
-    public void Clear()
-    {
-        _products.Clear();
+        UserId = userId;
+        Products = products;
         SummaryPrice = 0;
     }
 }
