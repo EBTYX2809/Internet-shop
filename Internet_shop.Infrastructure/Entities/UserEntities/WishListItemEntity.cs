@@ -1,0 +1,12 @@
+﻿using Internet_shop.Infrastructure.Entities.ProductEntities;
+
+namespace Internet_shop.Infrastructure.Entities.UserEntities;
+
+internal class WishListItemEntity
+{
+    public Guid Id { get; set; }
+    public Guid UserId { get; set; }
+    public UserEntity User { get; set; } = new();
+    public Guid ProductId { get; set; }
+    public ProductEntity Product { get; set; } = new();
+}

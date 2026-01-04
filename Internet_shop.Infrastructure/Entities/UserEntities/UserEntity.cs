@@ -13,7 +13,7 @@ internal class UserEntity
     public string AddressCountry { get; set; } = string.Empty;
     public string AddressCity { get; set; } = string.Empty;
     public string AddressStreet { get; set; } = string.Empty;
-    public List<ProductEntity> WishList { get; set; } = new();
+    public List<WishListItemEntity> WishList { get; set; } = new();
     public List<OrderEntity> OrdersHistory { get; set; } = new();
     public List<ShoppingCartItemEntity> ShoppingCart { get; set; } = new();
 }
