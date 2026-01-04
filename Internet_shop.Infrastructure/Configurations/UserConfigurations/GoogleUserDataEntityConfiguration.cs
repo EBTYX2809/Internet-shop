@@ -8,7 +8,7 @@ internal class GoogleUserDataEntityConfiguration : IEntityTypeConfiguration<Goog
 {
     public void Configure(EntityTypeBuilder<GoogleUserDataEntity> builder)
     {
-        builder.ToTable("GoogleUserData");
+        builder.ToTable("GoogleUsersData");
 
         builder.HasKey(gud => gud.UserId);
 
