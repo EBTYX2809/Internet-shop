@@ -21,13 +21,13 @@ public class RefreshToken
         UserId = userId;
     }
 
-    public RefreshToken(Guid id, Guid userId)
+    public RefreshToken(Guid id, string token, DateTime expiresAt, DateTime createdAt, bool isRevoked, Guid userId)
     {
         Id = id;
-        Token = Convert.ToBase64String(RandomNumberGenerator.GetBytes(64));
-        ExpiresAt = DateTime.UtcNow.AddDays(7);
-        CreatedAt = DateTime.UtcNow;
-        IsRevoked = false;
+        Token = token;
+        ExpiresAt = expiresAt;
+        CreatedAt = createdAt;
+        IsRevoked = isRevoked;
         UserId = userId;
     }
 }
