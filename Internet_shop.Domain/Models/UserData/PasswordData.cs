@@ -8,8 +8,7 @@ public class PasswordData
     public string Salt { get; init; }
     public PasswordData(string password)
     {
-        if(string.IsNullOrEmpty(password) || password.Length < 6 || password.Length > 20)
-            throw new ArgumentException("Password length must be between 8 and 64 characters.");
+        ValidatePassword(password);
 
         Salt = GenerateSalt();
         PasswordHash = HashPassword(password, Salt);        
@@ -18,6 +17,18 @@ public class PasswordData
     {
         PasswordHash = passwordHash;
         Salt = salt;
+    }
+
+    public bool VerifyPassword(string password)
+    {
+        var hashedInput = HashPassword(password, Salt);
+        return PasswordHash == hashedInput;
+    }
+
+    private void ValidatePassword(string password)
+    {
+        if (string.IsNullOrEmpty(password) || password.Length < 6 || password.Length > 20)
+            throw new ArgumentException("Password length must be between 8 and 64 characters.");
     }
 
     private string HashPassword(string password, string salt)
